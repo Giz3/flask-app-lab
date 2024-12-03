@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #0078D7;
+            color: white;
+        }
+        header h1 {
+            margin: 10px 0;
+        }
+        nav {
+            background-color: #005BB5;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background-color: #003F7E;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+        h2 {
+            color: #0078D7;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 5px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #005BB5;
+            color: white;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Андрій Войтків</h1>
+    <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Profile Image">
+</header>
+
+<nav>
+    <a href="#about">Про себе</a>
+    <a href="#education">Освіта</a>
+    <a href="#skills">Навички</a>
+    <a href="#experience">Досвід роботи</a>
+</nav>
+
+<section id="about">
+    <h2>Про себе</h2>
+    <p>Люблю вирішувати складні завдання, створювати ефективні рішення та постійно розвивати свої навички. Захоплююся новими технологіями та прагну робити свій внесок у цікаві проекти.</p>
+</section>
+
+<section id="education">
+    <h2>Освіта</h2>
+    <ul>
+        <li><strong> Прикарпатський національний університет імені Василя Стефаника</strong> -  Інженерія програмного забезпечення. Спеціальність: 121</li>
+        <li><strong>Ліцей №21 імені Євгена Коновальця</strong></li>
+    </ul>
+</section>
+
+<section id="skills">
+    <h2>Навички</h2>
+    <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Python, Flask</li>
+        <li>Бази даних (SQL, PostgreSQL)</li>
+        <li>Робота з Git/GitHub</li>
+    </ul>
+</section>
+
+<section id="experience">
+    <h2>Досвід роботи</h2>
+    <ul>
+        <li><strong>Проект 1:</strong> Розробив веб-додаток для управління завданнями, використовуючи Flask і PostgreSQL.</li>
+        <li><strong>Проект 2:</strong> Розробив інтерактивний інтерфейс користувача за допомогою React.</li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2024 Андрій Войтків. Усі права захищено.</p>
+</footer>
+
+</body>
+</html>
