@@ -1,45 +1,31 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+body.light {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #fff;
 }
 
 header {
-    text-align: center;
-    padding: 20px;
-    background-color: #f8f8f8;
+    background-color: #007bff;
+    color: white;
 }
 
-section {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-img {
-    max-width: 150px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
+.theme-buttons a {
+    padding: 10px 20px;
+    border-radius: 5px;
     text-decoration: none;
-    color: #333;
+    margin: 0 5px;
+}
+
+.theme-buttons .btn-light {
+    background-color: #007bff;
+    color: white;
+}
+
+.theme-buttons .btn-dark {
+    background-color: #555;
+    color: white;
 }
