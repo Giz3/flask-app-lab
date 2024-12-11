@@ -3,23 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Вхід</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-<header>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('login') }}">Вхід</a></li>
-            <li><a href="{{ url_for('profile') }}">Профіль</a></li>
-            <li><a href="{{ url_for('login') }}">Головна</a></li>
-            <li><a href="{{ url_for('profile') }}">Резюме</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main>
+    <h1>Форма входу</h1>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul>
@@ -29,13 +17,14 @@
             </ul>
         {% endif %}
     {% endwith %}
-
-    {% block content %}{% endblock %}
-</main>
-
-<footer>
-    <p>&copy; 2024 Андрій Войтків. Усі права захищені.</p>
-</footer>
-
+    <form method="post">
+        <label for="username">Ім'я користувача:</label>
+        <input type="text" name="username" id="username" required>
+        <br>
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+        <button type="submit">Увійти</button>
+    </form>
 </body>
 </html>
