@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Головна сторінка{% endblock %}
+
+{% block content %}
+<article class="homepage-content">
+    <header class="welcome-banner">
+        <h1>Вітаю вас на моєму сайті!</h1>
+        <p>Цей веб-сайт створений у рамках виконання лабораторних робіт із використанням Flask.</p>
+    </header>
+
+    <section class="site-overview">
+        <h2>Що можна знайти на цьому сайті:</h2>
+        <div class="overview-list">
+            <div class="overview-item">
+                <h3>Резюме</h3>
+                <p>Детальна інформація про мої навички, досвід роботи та освіту.</p>
+            </div>
+            <div class="overview-item">
+                <h3>Проекти</h3>
+                <p>Опис проектів, над якими я працював, із прикладами реалізації.</p>
+            </div>
+            <div class="overview-item">
+                <h3>Контакти</h3>
+                <p>Мої контактні дані для зв’язку.</p>
+            </div>
+        </div>
+    </section>
+</article>
+{% endblock %}

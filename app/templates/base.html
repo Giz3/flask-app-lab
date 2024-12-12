@@ -3,39 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{{ page_title or "Моя сторінка" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block additional_styles %}{% endblock %}
 </head>
 <body>
+    <section class="header-section">
+        <div class="container">
+            <h1>{{ page_title or "Мій веб-сайт" }}</h1>
+        </div>
+    </section>
 
-<header>
     <nav>
-        <ul>
-            <li><a href="{{ url_for('login') }}">Вхід</a></li>
-            <li><a href="{{ url_for('profile') }}">Профіль</a></li>
-            <li><a href="{{ url_for('login') }}">Головна</a></li>
-            <li><a href="{{ url_for('profile') }}">Резюме</a></li>
-        </ul>
+        {% include 'navigation.html' %}
     </nav>
-</header>
 
-<main>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul>
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+    <main class="main-content">
+        <section class="flash-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-list">
+                        {% for category, message in messages %}
+                            <p class="flash-item {{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </section>
 
-    {% block content %}{% endblock %}
-</main>
+        <section class="content-section">
+            {% block content %}{% endblock %}
+        </section>
+    </main>
 
-<footer>
-    <p>&copy; 2024 Андрій Войтків. Усі права захищені.</p>
-</footer>
-
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
 </body>
 </html>

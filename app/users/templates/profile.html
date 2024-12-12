@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="profile {% if request.cookies.get('color_scheme') == 'dark' %}dark-theme{% else %}light-theme{% endif %}">
+    <header>
+        <h1>Привіт, {{ username }}!</h1>
+        <p>Раді бачити вас у системі.</p>
+    </header>
+
+    <div class="theme-controls">
+        <p>Обрати кольорову тему:</p>
+        <nav>
+            <a href="{{ url_for('users.set_color_scheme', scheme='light') }}" class="btn-light">Світла</a>
+            <a href="{{ url_for('users.set_color_scheme', scheme='dark') }}" class="btn-dark">Темна</a>
+        </nav>
+    </div>
+
+    <section class="cookie-management">
+        <h2>Керування куками</h2>
+
+        <form method="post" action="{{ url_for('users.profile') }}">
+            <fieldset>
+                <legend>Додати куку</legend>
+                <input type="hidden" name="action" value="add">
+                <label for="key">Ключ:</label>
+                <input type="text" id="key" name="key" placeholder="Назва куки" required>
+                
+                <label for="value">Значення:</label>
+                <input type="text" id="value" name="value" placeholder="Значення куки" required>
+                
+                <label for="days">Термін (дні):</label>
+                <input type="number" id="days" name="days" min="1" placeholder="Наприклад, 7" required>
+                
+                <button type="submit" class="btn-submit">Додати</button>
+            </fieldset>
+        </form>
+
+        <form method="post" action="{{ url_for('users.profile') }}">
+            <fieldset>
+                <legend>Видалити куку за ключем</legend>
+                <input type="hidden" name="action" value="delete_key">
+                <label for="delete_key">Ключ:</label>
+                <input type="text" id="delete_key" name="delete_key" placeholder="Ключ для видалення" required>
+                <button type="submit" class="btn-delete">Видалити</button>
+            </fieldset>
+        </form>
+
+        <form method="post" action="{{ url_for('users.profile') }}">
+            <fieldset>
+                <legend>Видалити всі куки</legend>
+                <input type="hidden" name="action" value="delete_all">
+                <button type="submit" class="btn-delete-all">Видалити всі</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <section class="current-cookies">
+        <h2>Поточні куки</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ключ</th>
+                    <th>Значення</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in cookies.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</section>
+{% endblock %}
