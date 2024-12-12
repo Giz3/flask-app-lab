@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="greeting-section">
+    <header>
+        <h2>Привіт!</h2>
+    </header>
+
+    <div class="info-block">
+        {% if name %}
+            <p class="info success">Ім'я: {{ name }}</p>
+        {% else %}
+            <p class="info error">Ім'я не вказано</p>
+        {% endif %}
+    </div>
+
+    <div class="info-block">
+        {% if age is not none %}
+            <p class="info success">Вік: {{ age }}</p>
+        {% else %}
+            <p class="info error">Вік не вказано</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
