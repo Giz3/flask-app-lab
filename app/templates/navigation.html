@@ -1,8 +1,17 @@
-<nav>
-    <ul>
-        <li><a href="#about">Про себе</a></li>
-        <li><a href="#education">Освіта</a></li>
-        <li><a href="#skills">Навички</a></li>
-        <li><a href="#experience">Досвід роботи</a></li>
+<header class="main-header">
+    <ul class="nav-menu">
+        <li class="nav-item"><a href="/">Головна</a></li>
+        <li class="nav-item"><a href="{{ url_for('my_resume') }}">Резюме</a></li>
+        <li class="nav-item"><a href="{{ url_for('contact_page') }}">Контакти</a></li>
+
+        {% if session.get("user") %}
+            <li class="nav-item"><a href="{{ url_for('users.profile') }}">Профіль</a></li>
+            <li class="nav-item">
+                <a href="#" onclick="event.preventDefault(); document.querySelector('.logout-form').submit();">Вийти</a>
+                <form class="logout-form" action="{{ url_for('users.logout') }}" method="POST" hidden></form>
+            </li>
+        {% else %}
+            <li class="nav-item"><a href="{{ url_for('users.login_user') }}">Вхід</a></li>
+        {% endif %}
     </ul>
-</nav>
+</header>

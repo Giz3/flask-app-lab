@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('posts.static', filename='css/style.css') }}">
+{% endblock css %}
+
+{% block content %}
+    <section class="post-list-section">
+        <header>
+            <h2>Перегляд постів</h2>
+        </header>
+
+        <div class="posts-wrapper">
+            {% if posts %}
+                {% for post in posts %}
+                    <article class="post-item">
+                        <figure class="post-image-wrapper">
+                            <img src="{{ url_for('posts.static', filename='img/default.png') }}" alt="Зображення для {{ post.title }}" class="post-thumbnail">
+                        </figure>
+                        <div class="post-details">
+                            <h3 class="post-title">{{ post.title }}</h3>
+                            <p class="post-meta">
+                                <strong>Категорія:</strong> {{ post.category }} |
+                                <strong>Автор:</strong> {{ post.author }} |
+                                <strong>Дата публікації:</strong> {{ post.publication_date }}
+                            </p>
+                            <p class="post-content">{{ post.content }}</p>
+
+                            {% if not post.is_active %}
+                                <div class="post-status inactive">
+                                    <p>Цей пост не активний</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>Наразі немає доступних постів для перегляду.</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

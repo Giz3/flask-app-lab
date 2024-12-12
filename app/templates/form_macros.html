@@ -1,0 +1,13 @@
+{% macro render_input(field) %}
+    <section class="input-container">
+        <label class="input-label">{{ field.label.text }}</label>
+        {{ field(class="input-field") }}
+        {% if field.errors %}
+            <ul class="error-list">
+                {% for error in field.errors %}
+                    <li class="error-message">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+{% endmacro %}
