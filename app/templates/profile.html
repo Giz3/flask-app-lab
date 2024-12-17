@@ -54,8 +54,8 @@
 
     <div class="container">
         <div class="theme-buttons">
-            <a href="{{ url_for('set_theme', theme='light') }}" class="btn-light">Світла тема</a>
-            <a href="{{ url_for('set_theme', theme='dark') }}" class="btn-dark">Темна тема</a>
+            <a href="{{ url_for('users.set_color_scheme', scheme='light') }}" class="btn-light">Світла тема</a>
+            <a href="{{ url_for('users.set_color_scheme', scheme='dark') }}" class="btn-dark">Темна тема</a>
         </div>
 
         <h1>Керування кукі</h1>
@@ -70,7 +70,7 @@
         {% endif %}
         {% endwith %}
 
-        <a href="{{ url_for('logout') }}" class="btn btn-danger">Вийти</a>
+        <a href="{{ url_for('users.logout') }}" class="btn btn-danger">Вийти</a>
 
         <!-- Форми керування кукі залишаються без змін -->
 

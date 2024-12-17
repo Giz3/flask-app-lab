@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts-list.css') }}">
+{% endblock css %}
+
+{% block content %}
+<h1 class="mb-4">List of Posts</h1>
+<div class="post-list">
+    {% for post in posts %}
+    <div class="post-item card mb-4 shadow-sm">
+        <img 
+            src="{{ url_for('posts.static', filename='img/default-post.png') }}" 
+            alt="Image for {{ post.title }}" 
+            class="card-img-top post-thumbnail"
+        >
+        <div class="card-body">
+            <h2 class="card-title">
+                <a href="{{ url_for('posts.view_post', id=post.id) }}">{{ post.title }}</a>
+            </h2>
+            <p class="text-muted"><strong>Category:</strong> {{ post.category }}</p>
+            <p><strong>Author:</strong> {{ post.author }}</p>
+            <p><strong>Published:</strong> {{ post.posted.strftime('%d %B %Y, %H:%M') }}</p>
+            <p class="post-snippet">{{ post.content[:150] }}...</p>
+
+            {% if not post.is_active %}
+            <div class="alert alert-danger mt-2">This post is inactive</div>
+            {% endif %}
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="{{ url_for('posts.edit_post', id=post.id) }}" class="btn btn-sm btn-warning">Edit</a>
+            <form action="{{ url_for('posts.delete_post', id=post.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info">No posts available at the moment.</div>
+    {% endfor %}
+</div>
+{% endblock content %}
