@@ -1,7 +1,7 @@
 from flask import abort, flash, redirect, render_template, url_for, session
 from . import posts_blueprint
 from .forms import PostForm
-from app.posts.models import Post
+from app.posts.models import Post, Tag
 from app import db
 
 
@@ -20,6 +20,9 @@ def add_post():
             posted=form.publish_date.data,
             author=username,
         )
+
+        selected_tags = Tag.query.filter(Tag.id.in_(form.tags.data)).all()
+        new_post.tags.extend(selected_tags)
 
         db.session.add(new_post)
         db.session.commit()

@@ -26,7 +26,7 @@ def admin():
     return redirect(to_url)
 
 
-@users_blueprint.route("/users/login", methods=["GET", "POST"])
+@users_blueprint.route("/login", methods=["GET", "POST"])
 def login():
     correct_username = "admin"
     correct_password = generate_password_hash("password123")
